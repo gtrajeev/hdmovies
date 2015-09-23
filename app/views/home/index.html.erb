@@ -1,0 +1,20 @@
+<% if @recent_movies.present? %>
+Recently added movies
+<ul>
+	<% @recent_movies.each do |movie|%>
+		<li><%= link_to movie.name, controller: "movies", action: "show", id: movie.id%> &nbsp;&nbsp;[<%=movie.language.title%>]
+			<!-- <a href="/system/Onnam Loka Mahayuddham.mkv">Download</a> -->
+		</li>
+	<%end%>
+</ul>
+<% end %>
+<% if @movies.present? %>
+The following movies are not copied to HD.
+<ul>
+	<% @movies.each do |movie|%>
+		<li><%=movie.name%></li>
+	<%end%>
+</ul>
+<% end %>
+
+<%=link_to "Movies", movies_path %>

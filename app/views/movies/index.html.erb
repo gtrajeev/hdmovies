@@ -1,0 +1,15 @@
+ <%= form_tag movies_path, :method => 'get' do %>
+ <p>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag :Search, name: nil %>
+  <% if policy(:movie).create? %>
+	  <%=link_to "Add Movie", new_movie_path, :class=>"btn btn-primary"%>
+	<% end %>
+  <%= check_box_tag :by_word, params[:by_word], value=params[:by_word]%> Search by Word
+</p>
+<% end %>
+<%= paginate @movies %>
+<% @movies.each do |movie| %>
+	<p><%= link_to movie.name, controller: "movies", action: "show", id: movie.id%> &nbsp;&nbsp; [<%= movie.st_device %>]</p>
+<%end%>
+<%= paginate @movies %>

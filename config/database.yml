@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  host: localhost
+  username: root
+  password: 
+  encoding: utf8
+
+development:
+  <<: *default
+  database: hdmovies
+
+test:
+  <<: *default
+  database: hdmovies_test
+
+# production:
+#   <<: *default
+#   database: moviezone_prod

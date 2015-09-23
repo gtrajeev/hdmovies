@@ -1,0 +1,55 @@
+<%= form_for @movie do |f| %>
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@movie.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :language %><br>
+    <%= f.collection_select(:language_id, Language.all, :id, :title, :include_blank=>'Select') %>
+  </p>
+
+  <p>
+    <%= f.label :category %><br>
+    <%= f.collection_select(:category_id, Category.all, :id, :title, :include_blank=>'Select') %>
+  </p>
+
+  <p>
+    <%= f.label :file_type %><br>
+    <%= f.collection_select(:filetype_id, Filetype.all, :id, :title, :include_blank=>'Select') %>
+  </p>
+
+  <p>
+    <%= f.label :rating %><br>
+    <%= f.collection_select(:rating_id, Rating.all, :id, :star, :include_blank=>'Select') %>
+  </p>
+  <p>
+    <%= f.label :stored_in %><br>
+    <%= f.text_field :st_device %>
+  </p>
+  <p>
+    <%= f.label :release_year %><br>
+    <%= f.select :release_year, 1950.. Date.today.year, :include_blank=>'Select' %>
+  </p>
+
+  <p>
+    <%= f.label :plot %><br>
+    <%= f.text_area :plot %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
