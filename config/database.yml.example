@@ -3,8 +3,8 @@ default: &default
   pool: 5
   timeout: 5000
   host: localhost
-  username: root
-  password: 
+  username:
+  password:
   encoding: utf8
 
 development:
@@ -14,7 +14,3 @@ development:
 test:
   <<: *default
   database: hdmovies_test
-
-# production:
-#   <<: *default
-#   database: moviezone_prod
