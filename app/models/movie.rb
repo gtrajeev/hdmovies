@@ -13,7 +13,7 @@ class Movie < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => :language_id
 
   scope :not_copied, -> { where("st_device='Laptop'") }
-  scope :recent, -> { where("DATE(created_at) > CURDATE() - INTERVAL 30 DAY") }
+  scope :recent, -> { where("DATE(updated_at) > CURDATE() - INTERVAL 30 DAY") }
 
 
   def self.search_results(query, word_search)
